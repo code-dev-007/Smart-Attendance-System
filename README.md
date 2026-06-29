@@ -1,187 +1,181 @@
-# 🎓 Smart Attendance System
+# Smart Attendance System
 
-An automated attendance tracking system built with **Streamlit** and **Face Recognition**, featuring a clean dark-themed web interface for managing student attendance with real-time camera-based face detection.
+A Streamlit-based attendance system that uses facial recognition to automate student attendance tracking. The system provides an intuitive web interface for registering students, marking attendance, viewing attendance records, and tracking absent students.
 
----
+## Features
 
-## 📸 Screenshots
+- **Student Registration**: Register students with their photo taken directly through the web interface
+- **Face Recognition**: Real-time face detection and recognition using webcam
+- **Attendance Tracking**: Automatic attendance marking with timestamp
+- **Attendance Records**: View and download attendance records by date range
+- **Absent Students**: View and download list of absent students for any date
+- **Settings**: Configure late threshold, email and WhatsApp alert preferences
+- **Embedded Camera Interface**: Camera controls integrated directly into the Streamlit UI
 
-### 🏠 Dashboard
-![Dashboard](screenshots/dashboard.png)
+## Installation
 
-The main dashboard displays:
-- **Total Students** registered in the system
-- **Present Today** count
-- **Absent Today** count
-- **Attendance Rate** percentage
-- **Weekly Attendance Trend** line chart
-- **Today's Attendance Distribution** pie chart
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/code-dev-007/Smart-Attendance-System.git
+    cd Smart-Attendance-System
+    ```
 
----
+2. Create a virtual environment (recommended):
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+    ```
 
-### 📸 Mark Attendance
-![Mark Attendance](screenshots/mark_attendance.png)
+3. Install system dependencies:
+    ```bash
+    sudo apt-get install cmake libgl1-mesa-glx
+    ```
 
-- Select attendance method: **Face Recognition**
-- Click **Start Camera** to activate webcam
-- System automatically detects and recognizes faces
-- Recognized students are marked present in real-time
-- **Recently Marked** panel shows latest entries
+4. Install the required packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
----
+## Directory Structure
 
-### 👤 Register New Student
-![Register Student](screenshots/register_student.png)
-
-Fill in student details:
-- **Name** (required)
-- **Course** (required)
-- **Section** (required)
-- **Roll No** (required)
-- **Email** (optional)
-- **Student ID** (auto-generated if left blank)
-- Capture photo using the embedded **camera widget**
-- Click **Register Student** to save
-
----
-
-### 📋 Attendance Records
-![View Records](screenshots/view_records.png)
-
-- Select **Start Date** and **End Date**
-- Records are fetched and displayed in a table
-- Option to **Download Records** as CSV
-
----
-
-### ❌ Absent Students
-![Absent Students](screenshots/absent_students.png)
-
-- Select a **date** to view absentees
-- Click **Show Absent Students**
-- Displays list of students who were not present
-- Option to download the absent list as CSV
-
----
-
-### ⚙️ Settings
-![Settings](screenshots/settings.png)
-
-Configure system behaviour:
-- **Late Attendance Threshold** — set time after which attendance is marked late (e.g. 09:30)
-- **Enable Email Alerts** — sends notification emails
-- **Enable WhatsApp Alerts** — sends WhatsApp notifications
-- Enter **Email Address** or **WhatsApp Number** as needed
-- Click **Save Settings** to persist changes
-
----
-
-## 📁 Project Structure
-
+The system will automatically create the following directories:
 ```
-smart_attendance/
-├── app.py                        # Main Streamlit entry point
-├── requirements.txt              # Python dependencies
-├── packages.txt                  # System-level dependencies
-├── students.csv                  # Student database
-├── settings.csv                  # Saved app settings
-│
-├── pages/                        # One file per screen
-│   ├── __init__.py
-│   ├── dashboard.py              # Dashboard with charts
-│   ├── mark_attendance.py        # Live camera face recognition
-│   ├── register_student.py       # Student registration form
-│   ├── view_records.py           # Date-range attendance records
-│   ├── absent_students.py        # Absent student report
-│   └── settings.py               # App configuration
-│
-├── utils/                        # Shared backend logic
-│   ├── __init__.py
-│   └── system.py                 # AttendanceSystem core class
-│
-├── assets/                       # Static files
-│   ├── logo.png                  # Sidebar logo
-│   └── haarcascade_frontalface_default.xml
-│
-├── dataset/                      # Student face images (auto-created)
-├── attendance_records/           # Daily attendance CSVs (auto-created)
-└── screenshots/                  # README screenshots
+Smart-Attendance-System/
+├── app.py                    # Main application file
+├── requirements.txt          # Python dependencies
+├── packages.txt              # System-level dependencies
+├── students.csv              # Student information database
+├── settings.csv              # App settings
+├── pages/                    # Individual page modules
+│   ├── dashboard.py
+│   ├── mark_attendance.py
+│   ├── register_student.py
+│   ├── view_records.py
+│   ├── absent_students.py
+│   └── settings.py
+├── utils/
+│   └── system.py             # Core AttendanceSystem class
+├── assets/                   # Logo and static files
+├── dataset/                  # Stores student photos
+├── attendance_records/       # Stores daily attendance CSV files
+└── Screenshots/              # App screenshots
 ```
 
----
+## Usage
 
-## 🚀 Installation
+1. Start the application:
+    ```bash
+    streamlit run app.py
+    ```
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/smart-attendance.git
-cd smart-attendance
-```
+2. Access the web interface through your browser (typically http://localhost:8501)
 
-### 2. Install system packages (Linux / Streamlit Cloud)
-```bash
-sudo apt-get install cmake libgl1-mesa-glx
-```
+3. Use the sidebar menu to navigate between pages:
+   - Dashboard
+   - Mark Attendance
+   - Register Student
+   - View Records
+   - Absent Students
+   - Settings
 
-### 3. Create virtual environment
-```bash
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-```
+### Dashboard
+1. Select "Dashboard" from the sidebar
+2. View today's total, present, and absent student counts
+3. View weekly attendance trend and today's distribution charts
 
-### 4. Install Python dependencies
-```bash
-pip install -r requirements.txt
-```
+### Student Registration
+1. Select "Register Student" from the sidebar
+2. Enter student Name, Course, Section, Roll No, and Email
+3. Take a photo using the embedded camera
+4. Click "Register Student" to save
 
----
+### Mark Attendance
+1. Select "Mark Attendance" from the sidebar
+2. Select attendance method: **Face Recognition**
+3. Click "Start Camera" to begin
+4. The system will automatically recognize faces and mark attendance
+5. Click "Stop Camera" to stop
 
-## ▶️ Run
+### View Attendance
+1. Select "View Records" from the sidebar
+2. Choose a Start Date and End Date
+3. View attendance data in tabular format
+4. Download records as CSV if needed
 
-```bash
-streamlit run app.py
-```
+### Absent Students
+1. Select "Absent Students" from the sidebar
+2. Choose a date
+3. Click "Show Absent Students" to view the list
+4. Download the absent list as CSV if needed
 
-Open **http://localhost:8501** in your browser.
+### Settings
+1. Select "Settings" from the sidebar
+2. Set the Late Attendance Threshold time
+3. Enable/disable Email or WhatsApp alerts
+4. Enter notification email or WhatsApp number
+5. Click "Save Settings"
 
----
+## Screenshots
 
-## 🛠️ Dependencies
+### Dashboard
+![Dashboard](Screenshots/Dashboard.png)
 
-| Package | Purpose |
-|---|---|
-| `streamlit` | Web UI framework |
-| `opencv-python-headless` | Camera & image processing |
-| `face_recognition` | Face detection & matching |
-| `numpy` | Numerical operations |
-| `pandas` | CSV data handling |
-| `plotly` | Interactive charts |
-| `Pillow` | Image handling |
+### Mark Attendance
+![Mark Attendance](Screenshots/Mark%20Attendance.png)
 
-Full list in `requirements.txt`.
+### Register Student
+![Register Student](Screenshots/Register%20Student.png)
 
----
+### View Records
+![View Records](Screenshots/View%20Records.png)
 
-## ⚙️ System Requirements
+### Absent Students
+![Absent Students](Screenshots/Absent%20Students.png)
 
-- Python **3.8+**
-- Webcam (for registration & attendance marking)
-- Minimum **4 GB RAM** (face_recognition is CPU-intensive)
-- Good lighting for accurate face detection
+### Settings
+![Settings](Screenshots/Settings.png)
 
----
+## Dependencies
 
-## 🔧 Troubleshooting
+Major dependencies include:
+- Streamlit
+- OpenCV
+- face_recognition
+- NumPy
+- Pandas
+- Plotly
 
-| Problem | Solution |
-|---|---|
-| Camera not working | Allow camera access in browser settings |
-| Face not recognized | Ensure good lighting; re-register with a clearer photo |
-| Slow recognition | Reduce number of registered faces; check CPU usage |
-| `dlib` install error | Install `cmake` system package first |
+For a complete list, see `requirements.txt`
 
----
+## System Requirements
 
-## 📄 License
+- Python 3.8 or higher
+- Webcam for face registration and attendance
+- Sufficient RAM for face recognition processing (minimum 4GB recommended)
+- CPU with good processing power (for real-time face recognition)
 
-MIT License © 2025 — Developed by **Sanath Shukla**
+## Limitations
+
+- Works best with good lighting conditions
+- Face recognition accuracy may vary based on image quality
+- Requires stable internet connection for web interface
+
+## Troubleshooting
+
+1. If the camera doesn't work:
+   - Check camera permissions in your browser
+   - Ensure no other application is using the camera
+
+2. If face recognition is slow:
+   - Reduce the number of registered faces
+   - Ensure good lighting conditions
+   - Check CPU usage and available memory
+
+3. If `dlib` or `face_recognition` fails to install:
+   - Ensure `cmake` is installed on your system
+   - Run `sudo apt-get install cmake libgl1-mesa-glx` first
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
