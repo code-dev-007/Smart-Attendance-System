@@ -315,7 +315,7 @@ def create_ui():
         show_settings_page()
     
     # Footer
-    st.markdown("<div style='text-align: center; margin-top: 2rem; size:10px;'>© 2025 Automatic Attendance System Using Facial Recognition <br>Developed by Ayush Ghildiyal </div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: center; margin-top: 2rem; size:10px;'>© 2025 Automatic Attendance System Using Facial Recognition <br>Developed by Sanath Shukla </div>", unsafe_allow_html=True)
 
 def show_dashboard():
     """Display dashboard page"""
