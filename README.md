@@ -182,3 +182,30 @@ Feel free to submit issues and enhancement requests!
 ## License
 
 This project is licensed under the MIT License — Developed by **Sanath Shukla**
+=======
+
+## Limitations
+
+- Works best with good lighting conditions
+- Face recognition accuracy may vary based on image quality
+- Requires stable internet connection for web interface
+
+## Troubleshooting
+
+1. If the camera doesn't work:
+   - Check camera permissions in your browser
+   - Ensure no other application is using the camera
+
+2. If face recognition is slow:
+   - Reduce the number of registered faces
+   - Ensure good lighting conditions
+   - Check CPU usage and available memory
+
+3. If `dlib` or `face_recognition` fails to install:
+   - Ensure `cmake` is installed on your system
+   - Run `sudo apt-get install cmake libgl1-mesa-glx` first
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
