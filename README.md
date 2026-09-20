@@ -11,6 +11,7 @@ A Streamlit-based attendance system that uses facial recognition to automate stu
 - **Absent Students**: View and download list of absent students for any date
 - **Settings**: Configure late threshold, email and WhatsApp alert preferences
 - **Embedded Camera Interface**: Camera controls integrated directly into the Streamlit UI
+- **Attendance Date & Time**: Records the date and time when attendance is marked
 
 ## Installation
 
